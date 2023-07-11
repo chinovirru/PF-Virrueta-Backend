@@ -1,0 +1,68 @@
+paths:
+  /api/products/:
+    get:
+      summary: Se obtienen todos los productos
+      tags:
+        - Products
+      responses:
+        "200":
+          description: Se obtiene todos los productos almacenados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "400":
+          description: Existe un error al obtener los datos
+components:
+  schemas:
+    Product:
+      type: object
+      required:
+        - id
+        - title
+        - description
+        - code
+        - price
+        - status
+        - stock
+        - category
+      properties:
+        id:
+          type: string
+          description: The auto-generated id of the product.
+        title:
+          type: string
+          description: The title of the product.
+        description:
+          type: string
+          description: The description of the product.
+        code:
+          type: string
+          description: The code internal of the product.
+        price:
+          type: number
+          description: The price of the product.
+        status:
+          type: string
+          description: The status of the product (Active or Inactive).
+        stock:
+          type: number
+          description: Quantity of the product.
+        category:
+          type: string
+          description: Category of the product.
+        thumbnail:
+          type: string
+          description: The URL of the product thumbnail.
+      example:
+        id: 2sf31813fy3u1et5r1t2ry
+        title: Mouse inalambrico
+        description: Mouse inalambrico a pilas. 1200dpi
+        code: 10025
+        price: 3200
+        status: Active
+        stock: 12
+        category: Accesories
+        thumbnail: /folder/image.png

@@ -1,0 +1,23 @@
+paths:
+  /api/products/:
+    post:
+      summary: Create a New Product
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/requestBodies/NewProduct"
+      responses:
+        "200":
+          description: Se obtiene todos los productos almacenados
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+        "400":
+          description: Existe un error al obtener los datos

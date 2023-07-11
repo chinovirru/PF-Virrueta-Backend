@@ -1,0 +1,20 @@
+<h2>Carrito de Compras</h2>
+<hr>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Precio Unitario</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each cart.products}}
+        <tr>
+            <td scope="row">{{this.product_id.title}}</td>
+            <td>{{this.quantity}}</td>
+            <td>{{this.product_id.price}}</td>
+        </tr>
+    {{/each}}
+  </tbody>
+</table>
