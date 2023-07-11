@@ -1,0 +1,79 @@
+<h3>Bienvenido: {{user}}</h3>
+<p>
+    <a href="/logout">Cerrar Sesion</a>
+</p>
+<h2> HOME - Productos existentes </h2>
+<hr>
+<div class="container">
+    <div class="row row-cols-auto">
+        <div class="col col-md-6">
+            <label>Busqueda:</label>
+            <input placeholder="Busqueda...">
+        </div>
+        <div class="col">
+            <label>Cantidad Productos</label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>10</option>
+                <option value="1">1</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+            </select>
+        </div>
+        <div class="col">
+            <label>Tipo Ordenamiento</label>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Por defecto</option>
+                <option value="asc">Ascendente</option>
+                <option value="desc">Descendente</option>
+            </select>
+        </div>
+    </div>    
+</div>
+<hr>
+<div class="container">
+    <div class="row row-cols-auto">
+        {{#each products.payload}}
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img src={{this.thumbnail}} class="card-img-top" alt="Imagen">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.title}}</h5>
+                        {{!-- <p class="card-text">{{this.description}}</p> --}}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Categoria: {{this.category}}</li>
+                        <li class="list-group-item">Stock: {{this.stock}}</li>
+                        <li class="list-group-item">Precio: ${{this.price}}</li>
+                        <li class="list-group-item">Precio: {{this._id}}</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href=`/products/detailProduct/{{this._id}}` class="card-link">Ver Detalle</a>
+                        <a href="#" class="card-link">Agregar al Carrito</a>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+<hr>
+<nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link">Anterior</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">...</a></li>
+    <li class="page-item"><a class="page-link" href="#">30</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Siguiente</a>
+    </li>
+  </ul>
+</nav>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>

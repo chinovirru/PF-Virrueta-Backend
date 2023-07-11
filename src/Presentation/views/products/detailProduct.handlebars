@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row row-cols-auto">
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <img src={{product.thumbnail}} class="card-img-top" alt="Imagen">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.title}}</h5>
+                    <p class="card-text">{{product.description}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Categoria: {{product.category}}</li>
+                    <li class="list-group-item">Stock: {{product.stock}}</li>
+                    <li class="list-group-item">Precio: ${{product.price}}</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Agregar al Carrito</a>
+                    <a href="#" class="card-link">Ir al Carrito</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col xl-6 lg-8 md-10 sm-12">
+
+            <h3> Registro en el sitio</h3>
+            <form>        
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" class="form-control" id="apellido" aria-describedby="apellidoHelp" placeholder="Apellido">
+                    {{!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" aria-describedby="nombreHelp" placeholder="Nombre">
+                    {{!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Direccion Email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Direccion email">
+                    {{!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+                </div>
+                <div class="form-group">
+                    <label for="clave1">Contraseña</label>
+                    <input type="password" class="form-control" id="clave1" placeholder="Contraseña">
+                </div>
+                <div class="form-group">
+                    <label for="clave2">Contraseña</label>
+                    <input type="password" class="form-control" id="clave2" placeholder="Repita la contraseña">
+                </div>
+                {{!-- <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div> --}}
+        {{!-- 
+                <a href="#" class="card-link">Registrarme</a>
+                <a href="#" class="card-link">Me olvide la contraseña...</a> --}}
+                <div class="d-grid py-2">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
