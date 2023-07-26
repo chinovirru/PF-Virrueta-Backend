@@ -18,7 +18,7 @@ import loggersRoutes from './src/Presentation/routes/loggers.route.js'
 import swaggerJSDoc from 'swagger-jsdoc'
 import { swaggerOptions } from './src/Presentation/config/swagger.config.js'
 import swaggerUIExpress from 'swagger-ui-express'
-import { NODE_ENV, PORT } from './src/Presentation/config/env.config.js'
+import { MONGO_STRING_CONNECTION, PORT, MONGO_SECRET } from './src/Presentation/config/env.config.js'
 
 const app = express()
 
@@ -28,19 +28,21 @@ app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
 app.use(session({
     store:MongoStore.create({
-        mongoUrl:'mongodb+srv://mongoadmin:Mongoadmin2023@ecommerce.benldra.mongodb.net/ecommerce?retryWrites=true&w=majority',
+        // mongoUrl:'mongodb+srv://mongoadmin:Mongoadmin2023@ecommerce.benldra.mongodb.net/ecommerce?retryWrites=true&w=majority',
+        mongoUrl: MONGO_STRING_CONNECTION,
         mongoOptions:{useNewUrlParser:true, useUnifiedTopology:true},
         ttl:1
     }),
-    secret:'sessions',
+    // secret:'sessions',
+    secret:MONGO_SECRET,
     resave:false,
     saveUninitialized:false
 }))
 
 app.use(handlerLogger)
 
-const specs = swaggerJSDoc(swaggerOptions)
-app.use('/api', swaggerUIExpress.serve, swaggerUIExpress.setup(specs))
+// const specs = swaggerJSDoc(swaggerOptions)
+// app.use('/api', swaggerUIExpress.serve, swaggerUIExpress.setup(specs))
 
 app.engine('handlebars', engine({
     handlebars: allowInsecurePrototypeAccess(Handlebars)
