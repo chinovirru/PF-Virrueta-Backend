@@ -3,6 +3,7 @@ import lodash from 'lodash';
 import Product from '../../Core/entities/Product.js';
 import ProductMongooseManager from '../../Infrastructure/dao/managers/ProductMongooseManager.js';
 import { getProductsMock } from '../controllers/productsController.js';
+import { deleteProduct, getAllProducts, getProductById, updateProduct } from '../controllers/products.controller.js';
 const router = Router();
 
 router.get('/', async(req, res) => {
@@ -14,21 +15,7 @@ router.get('/', async(req, res) => {
         }
     }
 
-    const searchCriterial = {}
-    if (parameters.query) {
-        searchCriterial = isNaN(parameters.query) ? {category: parameters.query} : {stock: category}
-    }
-
-    const optionsPagination = {
-        limit: parameters.limit ?? 10,
-        page: parameters.page ?? 1
-    }
-
-    if (parameters.sort) {
-        optionsPagination.sort = parameters.sort === 'asc' ? {price: 1} : {price: -1}
-    }
-            
-    const products = await ProductMongooseManager.findAll(searchCriterial, optionsPagination)
+    const products = await getAllProducts(parameters)
 
     return res.status(200).json(products)
 })
@@ -36,7 +23,8 @@ router.get('/', async(req, res) => {
 router.get('/:pid', async(req, res) => {
     const id = req.params.pid
     try {
-        const product = await ProductMongooseManager.findById(id)
+        // const product = await ProductMongooseManager.findById(id)
+        const product = await getProductById(id)
         return res.json(product)
     } catch (error) {
         return res.status(404).json({"Error": error.message})        
@@ -86,8 +74,8 @@ router.put('/:pid', async(req, res) => {
     }
   
     try {
-
-        const productUpdated = await ProductMongooseManager.update(id, productUpdate)
+        // const productUpdated = await ProductMongooseManager.update(id, productUpdate)
+        const productUpdated = await updateProduct(id, productRecived)
         return res.status(202).json({productUpdated})
     } catch(error) {
         return res.status(404).json({"Error": error.message})
@@ -97,7 +85,8 @@ router.put('/:pid', async(req, res) => {
 router.delete('/:pid', async(req, res) => {
     const id = req.params.pid
     try {
-        await ProductMongooseManager.deleteById(id)
+        // await ProductMongooseManager.deleteById(id)
+        await deleteProduct(id)
         return res.status(200).json({"Mensaje": "Producto Eliminado"})
         
     } catch (error) {
